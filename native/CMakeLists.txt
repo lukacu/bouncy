@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.1)
+
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+
+SET(CMAKE_CXX_STANDARD 11)
+FIND_PACKAGE(OpenCV REQUIRED)
+INCLUDE_DIRECTORIES(AFTER "${OpenCV_INCLUDE_DIRS}" "include")
+LINK_LIBRARIES(${OpenCV_LIBS})
+
+ADD_LIBRARY(bouncy SHARED camera.cpp processing.cpp wrapper.c)
+
+IF(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/godot_headers-master")
+    FILE(DOWNLOAD "https://github.com/GodotNativeTools/godot_headers/archive/master.zip" ${CMAKE_CURRENT_BINARY_DIR}/headers.zip)
+    EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_CURRENT_BINARY_DIR}/headers.zip WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+endif()
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR}/godot_headers-master)
+

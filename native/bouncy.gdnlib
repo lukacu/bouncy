@@ -1,0 +1,16 @@
+[entry]
+
+X11.64="res://native/libbouncy.so"
+Windows.64="res://native/bouncy.dll"
+OSX.64="res://native/libbouncy.dylib"
+
+[dependencies]
+
+X11.64=[  ]
+
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=true
