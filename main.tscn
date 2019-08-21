@@ -180,5 +180,5 @@ anims/greeting_blink = SubResource( 7 )
 [connection signal="camera_frame" from="." to="camera" method="_on_root_camera_frame"]
 [connection signal="camera_ready" from="." to="camera" method="_on_root_camera_ready"]
 [connection signal="force" from="." to="game/player" method="_on_root_force"]
-[connection signal="game_start" from="." to="shadow" method="_on_root_game_start"]
 [connection signal="game_start" from="." to="game/player" method="_on_root_game_start"]
+[connection signal="game_start" from="." to="shadow" method="_on_root_game_start"]
