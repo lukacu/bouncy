@@ -1,5 +1,16 @@
 cmake_minimum_required(VERSION 3.1)
 
+PROJECT(bouncy)
+
+INCLUDE(FetchContent)
+
+FetchContent_Declare(godot_api
+GIT_REPOSITORY https://github.com/godotengine/godot-headers.git
+GIT_TAG        godot-3.5.1-stable
+)
+
+FetchContent_MakeAvailable(godot_api)
+
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 
 SET(CMAKE_CXX_STANDARD 11)
@@ -9,10 +20,4 @@ LINK_LIBRARIES(${OpenCV_LIBS})
 
 ADD_LIBRARY(bouncy SHARED camera.cpp processing.cpp wrapper.c)
 
-IF(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/godot_headers-master")
-    FILE(DOWNLOAD "https://github.com/GodotNativeTools/godot_headers/archive/master.zip" ${CMAKE_CURRENT_BINARY_DIR}/headers.zip)
-    EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_CURRENT_BINARY_DIR}/headers.zip WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
-endif()
-
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR}/godot_headers-master)
-
+INCLUDE_DIRECTORIES(${godot_api_SOURCE_DIR})

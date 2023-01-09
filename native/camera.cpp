@@ -87,6 +87,8 @@ int Camera::flip(bool flip_lr, bool flip_ud) {
     this->flip_lr = flip_lr;
     this->flip_ud = flip_ud;
 
+    return 1;
+
 }
 
 void Camera::loop() {
