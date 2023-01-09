@@ -1,7 +1,9 @@
 Bouncy - Godot OpenCV integration example
 =========================================
 
-An example of using OpenCV in your Godot game through GDNative API. It works with Godot 3.1+, the example allows you to control a ball initialized using face detection using optical flow in the camera (e.g. by waving hand).
+An example of using OpenCV (version 4+) in your Godot game through GDNative API. It works with Godot 3.1+, the example allows you to control a ball initialized using face detection using optical flow in the camera (e.g. by waving hand).
+
+![Example](example.png)
 
 Setup
 -----
